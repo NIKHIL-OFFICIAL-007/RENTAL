@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: #f2f2f2;
@@ -17,16 +18,19 @@ body {
     padding: 20px 50px;
     background: linear-gradient(to right, #ff512f, #f09819);
 }
+
 .logo {
     font-size: 28px;
     font-weight: 900;
     color: white;
 }
+
 nav ul {
     list-style: none;
     display: flex;
     gap: 30px;
 }
+
 nav ul li a {
     text-decoration: none;
     color: white;
@@ -34,18 +38,22 @@ nav ul li a {
     font-weight: 600;
     transition: 0.3s;
 }
+
 nav ul li a:hover {
     color: #222;
 }
+
 .search-box {
     display: flex;
     gap: 5px;
 }
+
 .search-box input {
     padding: 6px 10px;
     border-radius: 4px;
     border: none;
 }
+
 .search-box button {
     background: white;
     border: none;
@@ -81,15 +89,18 @@ nav ul li a:hover {
     text-transform: uppercase;
     margin-bottom: 10px;
 }
+
 .hero-content h1 span {
     font-weight: 700;
 }
+
 .hero-content h2 {
     font-size: 28px;
     color: #ff7a00;
     font-style: italic;
     margin: 15px 0;
 }
+
 .hero-content p {
     font-size: 16px;
     margin: 20px 0;
@@ -141,6 +152,7 @@ nav ul li a:hover {
     color: black;
     transform: translateY(-2px);
 }
+
 .hero-image {
     flex: 1;
     height: 100%;
@@ -158,14 +170,98 @@ nav ul li a:hover {
     object-fit: cover;
 }
 
+/* Expandable Read More Section */
+.read-more-content {
+    opacity: 0;
+    transform: translateY(40px);
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.6s ease;
+    padding: 0 20px;
+    pointer-events: none;
+}
+
+.read-more-content.show {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 2000px;
+    margin-top: 30px;
+    pointer-events: auto;
+}
+
+/* Info Boxes Section */
+.info-boxes {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 40px auto;
+    padding: 0 20px;
+    animation: slideIn 1s ease forwards;
+}
+
+.info-box {
+    background: rgba(0, 0, 0, 0.75);
+    border-radius: 16px;
+    padding: 30px 20px;
+    width: 280px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(6px);
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.info-box:hover {
+    transform: translateY(-5px);
+}
+
+.info-box i {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #ff7a00;
+}
+
+.info-box h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.info-box p {
+    font-size: 14px;
+    color: #ddd;
+}
+
+.content-box {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    max-width: 800px;
+    margin: 40px auto;
+    text-align: left;
+}
+
 /* Animations */
 @keyframes fadeInLeft {
     0% { opacity: 0; transform: translateX(-40px); }
     100% { opacity: 1; transform: translateX(0); }
 }
-@keyframes fadeInRight {
-    0% { opacity: 0; transform: translateX(40px); }
-    100% { opacity: 1; transform: translateX(0); }
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 /* Responsive */
@@ -174,18 +270,83 @@ nav ul li a:hover {
         flex-direction: column;
         padding: 60px 20px;
     }
+
     .hero-content h1 {
         font-size: 40px;
     }
+
     .hero-content h2 {
         font-size: 20px;
     }
+
     .hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 1;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+        clip-path: none;
+    }
+
+    .info-boxes {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-box {
+        width: 90%;
+    }
 }
+
+/* Info Box Styling - Enlarged */
+.info-box {
+    background: rgba(0, 0, 0, 0.75);
+    border-radius: 20px;
+    padding: 40px 30px;
+    width: 350px;
+    min-width: 350px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(6px);
+    transition: transform 0.3s ease;
+}
+
+.info-box i {
+    font-size: 40px;
+    margin-bottom: 12px;
+    color: #ff7a00;
+}
+
+.info-box h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.info-box p {
+    font-size: 16px;
+    color: #ddd;
+}
+
+/* Scrolling Wrapper */
+.info-scroll-wrapper {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding: 0 20px;
+    margin-top: 40px;
+}
+
+.info-boxes.scrolling {
+    display: flex;
+    gap: 50px;
+    width: max-content;
+    animation: scrollLeft 35s linear infinite;
+}
+
+@keyframes scrollLeft {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
 }
